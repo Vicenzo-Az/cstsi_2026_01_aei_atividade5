@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-labelledby="title desc">
+  <title id="title">Finance Orbit Animation</title>
+  <desc id="desc">Animated dashboard inspired composition with bars, line chart and orbiting indicator.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#022c22"/>
+      <stop offset="100%" stop-color="#0f766e"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#a7f3d0"/>
+    </linearGradient>
+    <filter id="blurGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    .svgator-bg {
+      animation: svgatorPulse 5.2s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    .svgator-bars rect {
+      transform-box: fill-box;
+      transform-origin: center bottom;
+      animation: svgatorRise 1.8s ease-in-out infinite alternate;
+    }
+
+    .svgator-bars rect:nth-child(2) { animation-delay: .25s; }
+    .svgator-bars rect:nth-child(3) { animation-delay: .5s; }
+    .svgator-bars rect:nth-child(4) { animation-delay: .75s; }
+
+    .svgator-line {
+      stroke-dasharray: 420;
+      stroke-dashoffset: 420;
+      animation: svgatorDraw 4s ease-in-out infinite;
+    }
+
+    .svgator-orbit {
+      transform-origin: 300px 180px;
+      animation: svgatorSpin 8s linear infinite;
+    }
+
+    .svgator-dot {
+      animation: svgatorBlink 1.4s ease-in-out infinite;
+    }
+
+    @keyframes svgatorPulse {
+      0%, 100% { transform: scale(1); opacity: .9; }
+      50% { transform: scale(1.04); opacity: 1; }
+    }
+
+    @keyframes svgatorRise {
+      from { transform: scaleY(.55); }
+      to { transform: scaleY(1); }
+    }
+
+    @keyframes svgatorDraw {
+      0% { stroke-dashoffset: 420; opacity: .2; }
+      30%, 90% { stroke-dashoffset: 0; opacity: 1; }
+      100% { stroke-dashoffset: -30; opacity: .3; }
+    }
+
+    @keyframes svgatorSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes svgatorBlink {
+      0%, 100% { opacity: .35; }
+      50% { opacity: 1; }
+    }
+  </style>
+
+  <rect class="svgator-bg" x="20" y="20" width="560" height="320" rx="30" fill="url(#bg)" />
+
+  <g class="svgator-bars" fill="url(#bar)">
+    <rect x="120" y="180" width="40" height="90" rx="8"/>
+    <rect x="180" y="150" width="40" height="120" rx="8"/>
+    <rect x="240" y="120" width="40" height="150" rx="8"/>
+    <rect x="300" y="160" width="40" height="110" rx="8"/>
+  </g>
+
+  <polyline
+    class="svgator-line"
+    points="110,250 170,220 230,205 290,150 350,170 410,120 470,145"
+    fill="none"
+    stroke="#d1fae5"
+    stroke-width="8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    filter="url(#blurGlow)"
+  />
+
+  <g class="svgator-orbit">
+    <circle cx="300" cy="70" r="13" fill="#fef3c7"/>
+    <circle class="svgator-dot" cx="300" cy="70" r="6" fill="#f59e0b"/>
+  </g>
+
+  <circle cx="470" cy="145" r="9" fill="#ecfccb"/>
+</svg>
