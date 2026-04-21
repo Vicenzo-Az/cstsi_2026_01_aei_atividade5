@@ -3,9 +3,9 @@
  */
 
 export type {
-    CreateTransactionInput, Transaction,
-    TransactionType, UpdateTransactionInput
+    CreateTransactionInput,
+    Transaction,
+    TransactionType,
+    UpdateTransactionInput
 } from "./transaction";
-
-export type { Theme, UpdateUserSettingsInput, UserSettings } from "./user";
 

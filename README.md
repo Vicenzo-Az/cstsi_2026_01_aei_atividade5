@@ -1,73 +1,55 @@
-# React + TypeScript + Vite
+# Atividade 5 - Animacao SVG com Tailwind (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto da disciplina com foco em animacao e interface frontend usando React, TypeScript, Vite e Tailwind utilitario.
 
-Currently, two official plugins are available:
+## Objetivo da Atividade
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Recriar uma animacao no projeto frontend aplicando classes utilitarias do Tailwind e criar pelo menos uma classe customizada.
 
-## React Compiler
+Tambem foi solicitado criar/editar uma animacao SVG no SVGator e importar o SVG exportado no projeto React utilizando a tag `object`, preferencialmente no formato CSSOnly.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Requisitos Atendidos
 
-## Expanding the ESLint configuration
+- Animacao SVG adicionada e editada em `public/finance-orbit.svg`.
+- Importacao do SVG animado via tag `object` no React.
+- Alternancia automatica de cenarios do grafico (sem botoes).
+- Transicoes suaves entre cenarios com interpolacao por `requestAnimationFrame`.
+- Uso de classes utilitarias Tailwind no layout do dashboard.
+- Classe customizada criada em `src/index.css` (`.svgator-panel`).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Estrutura Principal da Solucao
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- `public/finance-orbit.svg`
+  - SVG animado base (estilo CSSOnly), preparado para atualizacao dinamica das barras.
+- `src/components/dashboard/InteractiveSvgChart.tsx`
+  - Componente React que carrega o SVG com `<object>`.
+  - Atualiza barras do SVG de forma automatica e suave.
+- `src/pages/Dashboard.tsx`
+  - Integracao do grafico interativo no estado vazio de transacoes.
+- `src/index.css`
+  - Classe custom e estilo visual do painel do SVG.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Como Executar
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Instalar dependencias:
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. Rodar em desenvolvimento:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+1. Gerar build de producao:
+
+```bash
+npm run build
+```
+
+## Observacoes
+
+- O SVG foi carregado com `object` para manter compatibilidade com exportacao CSSOnly do SVGator.
+- Os textos visiveis do grafico SVG foram removidos, mantendo apenas o comportamento visual/animado.

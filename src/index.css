@@ -140,4 +140,8 @@
     @apply rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/10 via-background to-teal-500/10 p-4 shadow-lg;
     animation: float-soft 6s ease-in-out infinite;
   }
+
+  .svgator-chip {
+    @apply h-8 rounded-full border-emerald-400/40 px-3 text-xs tracking-wide;
+  }
 }

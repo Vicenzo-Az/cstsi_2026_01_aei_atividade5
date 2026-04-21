@@ -1,4 +1,5 @@
 import { IncomeExpenseChart } from "@/components/dashboard/IncomeExpenseChart";
+import { InteractiveSvgChart } from "@/components/dashboard/InteractiveSvgChart";
 import { StatCard } from "@/components/dashboard/StatCard";
 import { TransactionItem } from "@/components/dashboard/TransactionItem";
 import { Button } from "@/components/ui/button";
@@ -39,19 +40,7 @@ export default function Dashboard() {
       {isEmpty ? (
         <Card className="p-12 text-center border-2 border-dashed">
           <div className="max-w-md mx-auto space-y-6">
-            <div className="svgator-panel relative overflow-hidden">
-              <div className="pointer-events-none absolute -left-10 -top-10 h-24 w-24 rounded-full bg-emerald-400/20 blur-xl animate-pulse" />
-              <div className="pointer-events-none absolute -right-10 -bottom-10 h-24 w-24 rounded-full bg-teal-400/20 blur-xl animate-pulse [animation-delay:900ms]" />
-
-              <object
-                data="/finance-orbit.svg"
-                type="image/svg+xml"
-                aria-label="Animated finance illustration"
-                className="mx-auto h-52 w-full rounded-xl"
-              >
-                Seu navegador nao conseguiu carregar o SVG animado.
-              </object>
-            </div>
+            <InteractiveSvgChart />
 
             <div className="space-y-2">
               <h3 className="text-xl font-semibold">No transactions yet</h3>
